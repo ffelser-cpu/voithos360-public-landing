@@ -18,9 +18,9 @@ This is the simple public Voithos360 landing page. It does not give anyone acces
 
 ## Change Signup Form
 
-In `script.js`, replace the Google Forms URL assigned to:
+In `index.html`, replace the Google Forms URL in the link with:
 
-`earlyAccessFormUrl`
+`id="signup-form-link"`
 
 with the new form URL.
 

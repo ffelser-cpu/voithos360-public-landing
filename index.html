@@ -148,31 +148,23 @@
             patient feedback conversation, or investor update.
           </p>
         </div>
-        <form class="signup-form" id="signup-form">
-          <label>
-            Name
-            <input name="name" type="text" autocomplete="name" required />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-          <label>
-            I am interested as a
-            <select name="interest">
-              <option>Patient or caregiver</option>
-              <option>Provider or care team</option>
-              <option>Employer, payer, or partner</option>
-              <option>Investor or advisor</option>
-            </select>
-          </label>
-          <label>
-            Note <span>Optional</span>
-            <textarea name="note" placeholder="Tell us what you are interested in."></textarea>
-          </label>
-          <button class="primary-link" type="submit">Submit interest</button>
-          <p class="form-note" id="form-note">This opens the Voithos360 early access form. No one receives beta app access automatically.</p>
-        </form>
+        <div class="signup-form signup-form-cta">
+          <h3>Request early access</h3>
+          <p>
+            The early access form opens in Google Forms so your information is captured in one
+            place.
+          </p>
+          <a
+            class="primary-link"
+            id="signup-form-link"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfN_3lA3igeHEhc_Q6hZRMWOTEZc60BSdrBlmVTaTsw24qEBA/viewform?usp=publish-editor"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open early access form
+          </a>
+          <p class="form-note">No one receives beta app access automatically.</p>
+        </div>
       </section>
     </main>
     <script src="./script.js"></script>
