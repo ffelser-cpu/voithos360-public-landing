@@ -2,6 +2,7 @@ const signupForm = document.querySelector("#signup-form");
 const formNote = document.querySelector("#form-note");
 const demoVideo = document.querySelector(".video-placeholder video");
 const videoShell = document.querySelector(".video-placeholder");
+const earlyAccessFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfN_3lA3igeHEhc_Q6hZRMWOTEZc60BSdrBlmVTaTsw24qEBA/viewform?usp=publish-editor";
 
 demoVideo?.addEventListener("canplay", () => {
   videoShell?.classList.add("has-video");
@@ -10,19 +11,9 @@ demoVideo?.addEventListener("canplay", () => {
 signupForm?.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const formData = new FormData(signupForm);
-  const name = formData.get("name") || "";
-  const email = formData.get("email") || "";
-  const interest = formData.get("interest") || "";
-  const note = formData.get("note") || "";
-  const subject = encodeURIComponent("Voithos360 early access interest");
-  const body = encodeURIComponent(
-    `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\nNote:\n${note}`,
-  );
-
-  window.location.href = `mailto:hello@voithos360.com?subject=${subject}&body=${body}`;
+  window.open(earlyAccessFormUrl, "_blank", "noopener,noreferrer");
 
   if (formNote) {
-    formNote.textContent = "Opening an email draft with this information. Send that email to complete the request.";
+    formNote.textContent = "Opening the Voithos360 early access form in a new tab.";
   }
 });

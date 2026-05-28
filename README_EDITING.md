@@ -16,13 +16,13 @@ This is the simple public Voithos360 landing page. It does not give anyone acces
 2. Rename it exactly: `demo-video.mp4`
 3. Redeploy/upload the whole folder.
 
-## Change Signup Email
+## Change Signup Form
 
-In `script.js`, replace:
+In `script.js`, replace the Google Forms URL assigned to:
 
-`hello@voithos360.com`
+`earlyAccessFormUrl`
 
-with the email address you want form requests sent to.
+with the new form URL.
 
 ## Deploy
 
