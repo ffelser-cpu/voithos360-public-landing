@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#143d59"/>
+  <circle cx="640" cy="360" r="86" fill="#ddf7ef" opacity="0.92"/>
+  <path d="M616 312 L616 408 L704 360 Z" fill="#0e8a8a"/>
+  <text x="640" y="495" text-anchor="middle" font-family="Avenir, Arial, sans-serif" font-size="38" font-weight="800" fill="#ffffff">Voithos360 demo video</text>
+</svg>

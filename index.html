@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voithos360 | Patient-facing care navigation</title>
+    <meta
+      name="description"
+      content="Voithos360 helps patients and caregivers understand what to ask, what to schedule, and what to do next."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="site-page">
+      <header class="site-nav" aria-label="Main navigation">
+        <a class="site-brand" href="#top" aria-label="Voithos360 home">
+          <span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          <strong>Voithos360</strong>
+        </a>
+        <nav>
+          <a href="#mission">Mission</a>
+          <a href="#founder">Founder</a>
+          <a href="#product">Product</a>
+          <a href="#signup">Sign up</a>
+        </nav>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Patient-facing care command center</p>
+          <h1>Know what to ask, what to schedule, and what to do next.</h1>
+          <p>
+            Voithos360 turns scattered records, referrals, coverage rules, and visit conversations
+            into clear next steps patients can actually use.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#signup">Join the early access list</a>
+            <a class="secondary-link" href="mailto:hello@voithos360.com">Contact founder</a>
+          </div>
+        </div>
+
+        <div class="phone-mock" aria-label="Voithos360 preview">
+          <div class="mock-top"><span></span><span></span><span></span></div>
+          <div class="mock-profile">
+            <div class="mock-avatar">JM</div>
+            <div>
+              <strong>Jen Morgan</strong>
+              <small>Next visit in 14d</small>
+            </div>
+          </div>
+          <div class="mock-actions">
+            <article><strong>Repeat blood work</strong><span>Ask which labs and when</span></article>
+            <article><strong>Schedule specialist visits</strong><span>Hematology and GI follow-up</span></article>
+            <article><strong>Share visit summary</strong><span>Caregiver update ready for approval</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-band" id="mission">
+        <div class="section-heading">
+          <p class="eyebrow">Mission</p>
+          <h2>Help patients move through healthcare with clarity.</h2>
+        </div>
+        <div class="mission-grid">
+          <p>
+            Healthcare is hard to navigate when records live in different portals, insurance rules
+            are unclear, and visit instructions move fast. Voithos360 exists to give patients a
+            plain-English advocate that helps organize care, surface next steps, prepare questions,
+            and keep caregivers aligned.
+          </p>
+          <ul>
+            <li>Make complex care understandable.</li>
+            <li>Help patients act before delays become crises.</li>
+            <li>Give caregivers the same clear picture, with patient permission.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="site-band founder-band" id="founder">
+        <img class="founder-portrait" src="./headshot.jpg" alt="Felice Felser founder headshot" />
+        <div>
+          <p class="eyebrow">Founder</p>
+          <h2>Founder Bio</h2>
+          <h3>Felice Felser, Founder of Voithos360</h3>
+          <p>
+            Felice Felser is the founder of Voithos360, an AI-native healthcare advocacy and
+            orchestration platform focused on helping patients and caregivers navigate fragmented
+            healthcare systems. Drawing from experience in healthcare as a Nurse Practitioner,
+            product leadership, and digital health strategy, Felice is building technology that
+            addresses the growing operational and emotional burden placed on patients managing
+            complex care.
+          </p>
+        </div>
+      </section>
+
+      <section class="site-band demo-band" id="product">
+        <div class="section-heading">
+          <p class="eyebrow">Product preview</p>
+          <h2>A short look at the patient experience</h2>
+        </div>
+        <div class="video-card">
+          <div class="demo-phone-frame" aria-label="Mobile app demo video">
+            <div class="demo-phone-status">
+              <span>8:44</span>
+              <span>Voithos360 mobile demo</span>
+            </div>
+            <div class="video-placeholder">
+              <video controls playsinline preload="metadata" poster="./video-poster.svg">
+                <source src="./demo-video.mp4" type="video/mp4" />
+              </video>
+              <div class="video-empty">
+                <strong>Demo video placeholder</strong>
+                <span>Add your file as <code>demo-video.mp4</code> in this folder.</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Voithos360 helps patients turn care confusion into action.</h3>
+            <p>
+              The beta experience includes an overview, visit copilot, benefits guidance, advocacy
+              requests, and caregiver updates. The public site does not provide app access.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-band product-grid">
+        <article>
+          <h3>Overview</h3>
+          <p>Plain-English summary, open actions, next visit, and measurable impact.</p>
+        </article>
+        <article>
+          <h3>Visit Copilot</h3>
+          <p>Suggested questions and post-visit next steps from the conversation.</p>
+        </article>
+        <article>
+          <h3>Benefits + Advocacy</h3>
+          <p>Cost clarity, insurance guidance, and requests that Voithos360 can help answer.</p>
+        </article>
+      </section>
+
+      <section class="site-band signup-band" id="signup">
+        <div>
+          <p class="eyebrow">Early access</p>
+          <h2>Join the Voithos360 early access list.</h2>
+          <p>
+            Share your contact information if you are interested in a demo, pilot discussion,
+            patient feedback conversation, or investor update.
+          </p>
+        </div>
+        <form class="signup-form" id="signup-form">
+          <label>
+            Name
+            <input name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            I am interested as a
+            <select name="interest">
+              <option>Patient or caregiver</option>
+              <option>Provider or care team</option>
+              <option>Employer, payer, or partner</option>
+              <option>Investor or advisor</option>
+            </select>
+          </label>
+          <label>
+            Note <span>Optional</span>
+            <textarea name="note" placeholder="Tell us what you are interested in."></textarea>
+          </label>
+          <button class="primary-link" type="submit">Submit interest</button>
+          <p class="form-note" id="form-note">This opens an email draft so no one receives app access automatically.</p>
+        </form>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
