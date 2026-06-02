@@ -1,0 +1,33 @@
+Care Complexity Algorithm,,,,,,Open Actions Algorithm,
+,,,,,,,
+Text,Pts,,,,,Open Action Type,Example
+Low,0-24,,,,,Appointment,schedule visit
+Moderate,25-49,,,,,Insurance,follow up on prior auth or other insurance related issue
+High,50-74,,,,,Claim,appeal denied claim
+Complex,75-100,,,,,Medication refill,refill prescription
+,,,,,,records,send records to specialist
+,,,,,,lab/imaging,complete bloodwork
+Insurance and PA actions,For documentation,,,,,care team message,message provider
+10,3+ active conditions,,,,,cost,find lower cost option
+10,5+ medications,,,,,caregiver,assign caregiver task
+15,active prior authorization,,,,,,
+15,claim denial,,,,,,
+10,3+ specialists,,,,,Status Rules,
+10,missed appointment,,,,,,
+10,caregiver involved,,,,,Status,Counted as open
+10,open care gap,,,,,New,Yes
+10,cost concern,,,,,in progress,Yes
+,,,,,,waiting on user,Yes
+suggested weights,,,,,,waiting on provider,Yes
+,,,,,,waiting on payer,Yes
+Domain,Weight,,,,,completed,No
+clinical burden,25%,,,,,cancelled,No
+care coordination burden,25%,,,,,resolved,No
+insurance/admin burden,20%,,,,,duplicate,No
+medication burden,10%,,,,,,
+social/access barriers,10%,,,,,,
+caregiver burden,10%,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+Í,,,,,,,

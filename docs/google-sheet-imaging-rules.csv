@@ -1,0 +1,5 @@
+Category,Examples,Voithos summary and action
+Normal,no acute abnormality,reassure user and no further action is needed
+Acute,"fracture, pneumonia",explain findings and recommend calling provider 
+Chronic,degenerative changes,"reassure user, explain findings, and follow up with provider if symptoms worsen"
+Incidental,liver lesion,"reassure incidental finding, explain into plain english language, call provider for follow up"

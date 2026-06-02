@@ -1,0 +1,498 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  initials  String
+  context   String
+  riskLabel String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  actions   CareAction[]
+  gaps      CareGap[]
+  timeline  TimelineEvent[]
+}
+
+model ImpactMetric {
+  id                    String   @id @default(cuid())
+  clerkUserId           String
+  patientId             String?
+  category              String
+  label                 String
+  displayValue          String
+  numericValue          Float?
+  unit                  String?
+  estimatedDollarValue  Float?
+  calculation           String
+  sourceInputs          Json?
+  linkedCareActionIds   Json?
+  linkedCareGapIds      Json?
+  reportingPeriodStart  DateTime?
+  reportingPeriodEnd    DateTime?
+  audience              String   @default("patient")
+  source                String   @default("voithos360")
+  algorithmVersion      String   @default("impact-metrics-v1")
+  generatedAt           DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([clerkUserId])
+  @@index([patientId])
+  @@index([category])
+  @@index([reportingPeriodStart, reportingPeriodEnd])
+}
+
+model CareAction {
+  id        String   @id @default(cuid())
+  patientId String?
+  clerkUserId String?
+  title     String
+  detail    String
+  level     String
+  status    String   @default("open")
+  actionType String   @default("care_coordination")
+  owner     String   @default("patient")
+  dueDate   DateTime?
+  source    String   @default("demo")
+  dedupeKey String?
+  sortOrder Int      @default(0)
+  confidenceScore Float?
+  evidenceScore   Float?
+  rationale       String?
+  metadata        Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  patient Patient? @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  history CareActionHistory[]
+
+  @@index([clerkUserId])
+  @@index([status])
+}
+
+model CareGap {
+  id        String   @id @default(cuid())
+  patientId String?
+  clerkUserId String?
+  text      String
+  status    String   @default("needs_follow_up")
+  createdAt DateTime @default(now())
+
+  patient Patient? @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([clerkUserId])
+  @@index([status])
+}
+
+model TimelineEvent {
+  id        String   @id @default(cuid())
+  patientId String?
+  clerkUserId String?
+  type      String
+  title     String
+  detail    String
+  eventDate DateTime?
+  source    String   @default("demo")
+  createdAt DateTime @default(now())
+
+  patient Patient? @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([clerkUserId])
+  @@index([type])
+}
+
+model ConsentRecord {
+  id                            String   @id @default(cuid())
+  clerkUserId                   String
+  dataRightsAccepted            Boolean  @default(false)
+  hipaaAuthorizationAccepted    Boolean  @default(false)
+  dataRightsVersion             String
+  hipaaAuthorizationVersion     String
+  acceptedAt                    DateTime @default(now())
+  ipAddress                     String?
+  userAgent                     String?
+
+  @@index([clerkUserId])
+}
+
+model IntakeProfile {
+  id            String   @id @default(cuid())
+  clerkUserId   String   @unique
+  firstName     String?
+  lastName      String?
+  dob           DateTime?
+  ageYears      Int?
+  sex           String?
+  participantCode String?
+  nameMasked    Boolean  @default(true)
+  dobMasked     Boolean  @default(true)
+  zipCode       String?
+  email         String
+  caregiverName String?
+  caregiverEmail String?
+  caregiverRelationship String?
+  primaryProviderName String?
+  selfPay       Boolean  @default(false)
+  coverageType  String?
+  insuranceCardFileName String?
+  insuranceCardFileType String?
+  insuranceCardFileSize Int?
+  insuranceCardUploadedAt DateTime?
+  insuranceCardValidationOnly Boolean @default(true)
+  insuranceCardDeletedAt DateTime?
+  completedAt   DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model CaregiverProfile {
+  id          String   @id @default(cuid())
+  clerkUserId String   @unique
+  firstName   String?
+  lastName    String?
+  email       String?
+  relationship String?
+  phone       String?
+  source      String   @default("patient")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  permissions CaregiverPermission?
+  updates     CaregiverUpdate[]
+  tasks       CaregiverTask[]
+
+  @@index([clerkUserId])
+}
+
+model CaregiverPermission {
+  id          String   @id @default(cuid())
+  clerkUserId String   @unique
+  caregiverProfileId String? @unique
+  visitSummary Boolean @default(true)
+  appointmentReminders Boolean @default(true)
+  medLabReminders Boolean @default(true)
+  insuranceBillingUpdates Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  caregiverProfile CaregiverProfile? @relation(fields: [caregiverProfileId], references: [id], onDelete: Cascade)
+
+  @@index([clerkUserId])
+}
+
+model CaregiverUpdate {
+  id          String   @id @default(cuid())
+  clerkUserId String
+  caregiverProfileId String?
+  title       String
+  message     String
+  status      String   @default("Draft")
+  approvedAt  DateTime?
+  sentAt      DateTime?
+  completedAt DateTime?
+  declinedAt  DateTime?
+  relatedVisitId String?
+  relatedCareActionId String?
+  relatedAdvocacyRequestId String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  caregiverProfile CaregiverProfile? @relation(fields: [caregiverProfileId], references: [id], onDelete: SetNull)
+
+  @@index([clerkUserId])
+  @@index([status])
+}
+
+model CaregiverTask {
+  id          String   @id @default(cuid())
+  clerkUserId String
+  caregiverProfileId String?
+  title       String
+  notes       String?
+  status      String   @default("Draft")
+  dueDate     DateTime?
+  sentAt      DateTime?
+  completedAt DateTime?
+  relatedVisitId String?
+  relatedCareActionId String?
+  relatedAdvocacyRequestId String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  caregiverProfile CaregiverProfile? @relation(fields: [caregiverProfileId], references: [id], onDelete: SetNull)
+
+  @@index([clerkUserId])
+  @@index([status])
+}
+
+model CaregiverApprovalHistory {
+  id          String   @id @default(cuid())
+  clerkUserId String
+  caregiverProfileId String?
+  itemType    String
+  itemId      String?
+  status      String
+  summary     String
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  @@index([clerkUserId])
+  @@index([itemType, itemId])
+}
+
+model ProviderProfile {
+  id              String   @id @default(cuid())
+  clerkUserId     String
+  name            String
+  specialty       String?
+  organization    String?
+  phone           String?
+  email           String?
+  source          String   @default("Patient added")
+  portalUrl       String?
+  ehrSource       String?
+  ehrPractitionerId String?
+  isPrimary       Boolean  @default(false)
+  isPatientAdded  Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([clerkUserId])
+}
+
+model InsuranceCard {
+  id          String   @id @default(cuid())
+  clerkUserId String
+  fileName    String
+  fileType    String
+  fileSize    Int
+  storageUrl  String?
+  frontOrBack String   @default("front")
+  coverageRole String   @default("primary")
+  coverageType String?
+  validationUseOnly Boolean @default(true)
+  retainedAfterValidation Boolean @default(false)
+  validatedAt DateTime?
+  deletedAt DateTime?
+  isCurrent   Boolean  @default(true)
+  uploadedAt  DateTime @default(now())
+
+  @@index([clerkUserId])
+  @@index([coverageType])
+}
+
+model UserPreference {
+  id               String   @id @default(cuid())
+  clerkUserId      String   @unique
+  smsReminders     Boolean  @default(false)
+  pushReminders    Boolean  @default(false)
+  urgentAlertsOnly Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model PatientOverviewSummary {
+  id             String   @id @default(cuid())
+  clerkUserId    String
+  summary        String
+  source         String   @default("ehr_ai")
+  sourceInputs   Json?
+  modelVersion   String?
+  generatedAt    DateTime @default(now())
+
+  @@index([clerkUserId])
+}
+
+model CareComplexityAssessment {
+  id                    String   @id @default(cuid())
+  clerkUserId           String
+  label                 String
+  score                 Int
+  confidenceScore       Float
+  recommendedSupportLevel String
+  topDrivers            Json
+  scoringInputs         Json
+  domainScores          Json
+  algorithmVersion      String   @default("care-complexity-v1")
+  generatedAt           DateTime @default(now())
+
+  @@index([clerkUserId])
+}
+
+model AdvocacyRequest {
+  id          String   @id @default(cuid())
+  clerkUserId String
+  title       String
+  category    String
+  description String
+  status      String   @default("open")
+  priority    String   @default("normal")
+  voithosResponse String?
+  completedAt DateTime?
+  metadata    Json?
+  patientApprovedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([clerkUserId])
+  @@index([status])
+}
+
+model CareActionHistory {
+  id           String   @id @default(cuid())
+  careActionId String?
+  clerkUserId  String
+  eventType    String
+  summary      String
+  status       String   @default("draft")
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  careAction CareAction? @relation(fields: [careActionId], references: [id], onDelete: SetNull)
+
+  @@index([clerkUserId])
+  @@index([careActionId])
+}
+
+model SecureShareLink {
+  id           String   @id @default(cuid())
+  clerkUserId  String
+  tokenHash    String   @unique
+  recipientType String  @default("caregiver")
+  recipientEmail String?
+  itemType     String
+  itemId       String?
+  title        String
+  summary      String
+  expiresAt    DateTime
+  viewedAt     DateTime?
+  revokedAt    DateTime?
+  createdAt    DateTime @default(now())
+
+  @@index([clerkUserId])
+  @@index([expiresAt])
+}
+
+model ActionDetectionRun {
+  id              String   @id @default(cuid())
+  clerkUserId     String
+  totalPulled      Int
+  openCount        Int
+  closedCount      Int
+  excludedCount    Int
+  groupedCount     Int
+  sourceInputs     Json
+  categoryCounts   Json
+  algorithmVersion String   @default("open-action-detection-v1")
+  generatedAt      DateTime @default(now())
+
+  @@index([clerkUserId])
+}
+
+model PatientAppointment {
+  id             String   @id @default(cuid())
+  clerkUserId    String
+  providerName   String?
+  specialty      String?
+  organization   String?
+  appointmentAt  DateTime
+  status         String   @default("scheduled")
+  source         String   @default("ehr")
+  ehrAppointmentId String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([clerkUserId])
+  @@index([appointmentAt])
+}
+
+model LabInterpretation {
+  id               String   @id @default(cuid())
+  clerkUserId      String
+  panelName        String?
+  specimenDate     DateTime?
+  source           String   @default("ehr")
+  rawResults       Json
+  plainEnglishSummary String
+  overallPicture   String
+  nextSteps        Json
+  confidenceScore  Float
+  evidenceScore    Float
+  rationale        String
+  status           String   @default("active")
+  generatedAt      DateTime @default(now())
+
+  @@index([clerkUserId])
+  @@index([specimenDate])
+}
+
+model ImagingInterpretation {
+  id               String   @id @default(cuid())
+  clerkUserId      String
+  modality         String
+  bodyRegion       String?
+  examDate         DateTime?
+  indication       String?
+  impression       String?
+  findings         String?
+  priorComparison  String?
+  keyFindings      Json
+  findingClass     String
+  trend            String
+  urgency          String
+  plainEnglishSummary String
+  nextSteps        Json
+  confidenceScore  Float
+  evidenceScore    Float
+  rationale        String
+  status           String   @default("active")
+  generatedAt      DateTime @default(now())
+
+  @@index([clerkUserId])
+  @@index([examDate])
+  @@index([urgency])
+}
+
+model VisitCopilotSession {
+  id          String   @id @default(cuid())
+  clerkUserId String
+  startedAt   DateTime @default(now())
+  endedAt     DateTime?
+  transcript  String?
+  transcriptRetentionPolicy String @default("temporary_qa_72h")
+  transcriptExpiresAt DateTime?
+  rawAudioStored Boolean @default(false)
+  plainEnglishSummary String?
+  status      String   @default("recording")
+  confidenceScore Float?
+  evidenceScore Float?
+  rationale String?
+  qaStatus String @default("not_reviewed")
+  qaReviewedAt DateTime?
+
+  actions VisitCopilotAction[]
+
+  @@index([clerkUserId])
+}
+
+model VisitCopilotAction {
+  id          String   @id @default(cuid())
+  sessionId   String
+  actionType  String
+  title       String
+  detail      String
+  status      String   @default("suggested")
+  createdAt   DateTime @default(now())
+  approvedAt  DateTime?
+
+  session VisitCopilotSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}

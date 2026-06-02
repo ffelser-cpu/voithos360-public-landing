@@ -1,0 +1,16 @@
+input to evaluate,,,,,screening gap categories,,,status,
+,,,,,,,,,
+Age,,,,,category,examples,,label,meaning
+sex at birth,,,,,cancer screening,"mammogram (female only), colon cancer, cervical (female only), lung",,upcoming,due soon
+active conditions,,,,,cardiometabolic,"A1c, lipid panel, blood pressure, kidney function",,due now,recommedned now
+medication list,,,,,immunizations,"Flu, Covid, shingles, pneumonia, tetanus",,overdue,recommednded timeframe passed
+family history,,,,,chronic conditions,"diabetes eye exam, foot exam, urine microalbumin",,not due,not surfaced to user
+past screenings,,,,,medication monitoring,"statin, anticoagulant, renal/hepatic labs",,unknown,insufficient documentation (do not surface to user)
+lab history,,,,,women's health,"Pap/HPV, bone density",,Not applicable,pt does not meet criteria (do not surface to user)
+Insurance and PA actions,,,,,older adult care,"fall risk, cognitive, osteoporosis",,,
+visit history,,,,,behavioral health,depression and anxiety screening,,,
+risk factors,,,,,,,,,
+insurance coverage,,,,,,,,,
+prior care plan tasks,,,,,,,,,
+patient reproted history,,,,,,,,,
+patient/provider recording,,,,,,,,,

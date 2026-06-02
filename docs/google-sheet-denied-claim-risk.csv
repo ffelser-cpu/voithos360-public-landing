@@ -1,0 +1,23 @@
+Inputs to evaulatuate,,,,Denial Risk Categories,,,,,score bands,
+,,,,,,,,,,
+insurance plan type,,,,Risk label,Meaning,,,,score,label
+eligibility status,,,,Low Risk,claim likely clean,,,,0-24,Low risk
+CPT/HCPCS code,,,,moderate risk,some missing or uncertain data,,,,25-49,moderate risk
+ICD-10 Diagnosis code,,,,High risk,strong denial indicators present,,,,50-74,high risk
+provider network status,,,,critical risk,claim likely to deny without intervention,,,,75-100,critical risk
+prior authorization requirement,,,,,,,,,,
+medical necessity documentation,,,,,,,,,,
+Insurance and PA actions,,,,,,,,,,
+claim history,,,,suggested scoring model,,,,,,
+past denials,,,,,,,,,,
+duplicate claim risk,,,,factor,points,,,,,
+missing documenation,,,,No active eligibility,30,,,,,
+timely finling limits,,,,missing prior auth,25,,,,,
+coodination of benefits,,,,out of network provider,25,,,,,
+,,,,missing referral,15,,,,,
+,,,,diagnosis/procesure mismatch,20,,,,,
+,,,,missing medical necessity documentation,20,,,,,
+,,,,timely filing risk,20,,,,,
+,,,,prior similar denial history,15,,,,,
+,,,,coordination of benefits issue,10,,,,,
+,,,,duplicate claim pattern,15,,,,,
