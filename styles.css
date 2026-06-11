@@ -85,12 +85,35 @@ button.primary-link { cursor: pointer; width: 100%; }
 .signup-form textarea { min-height: 94px; resize: vertical; }
 .form-note { margin: 0; color: var(--slate); font-size: 12px; line-height: 1.4; }
 
+.page-hero { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: clamp(42px, 8vw, 86px) 0 34px; }
+.page-hero h1 { max-width: 920px; margin-bottom: 18px; font-size: clamp(44px, 7vw, 78px); line-height: 0.98; }
+.page-hero p:not(.eyebrow) { max-width: 760px; color: var(--slate); font-size: 21px; line-height: 1.45; }
+.page-actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+.info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.info-card { border: 1px solid var(--line); border-radius: 8px; background: var(--white); padding: 22px; }
+.info-card h3 { margin-bottom: 10px; font-size: 24px; }
+.info-card p, .info-card li { color: var(--slate); line-height: 1.5; }
+.info-card ul { margin: 0; padding-left: 18px; }
+.step-list { display: grid; gap: 14px; counter-reset: steps; }
+.step-item { border: 1px solid var(--line); border-radius: 8px; background: #fbfdfc; padding: 20px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: start; }
+.step-item::before { counter-increment: steps; content: counter(steps); width: 42px; height: 42px; border-radius: 8px; background: var(--teal); color: var(--white); display: grid; place-items: center; font-weight: 900; }
+.step-item h3 { margin-bottom: 6px; font-size: 24px; }
+.step-item p { margin-bottom: 0; color: var(--slate); line-height: 1.5; }
+.simple-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.simple-list li { border: 1px solid var(--line); border-radius: 8px; background: var(--pale); padding: 14px 16px; font-weight: 900; }
+.founder-note { border-left: 5px solid var(--teal); padding-left: 18px; color: var(--slate); font-size: 20px; line-height: 1.45; }
+.contact-panel { display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(300px, 0.58fr); gap: 24px; align-items: center; }
+.contact-panel .signup-form { min-height: 260px; }
+.footer-band { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 28px 0 42px; color: var(--slate); font-size: 13px; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.footer-band a { color: var(--ink); font-weight: 900; text-decoration: none; }
+
 @media (max-width: 840px) {
   .site-nav { min-height: auto; padding: 16px 0; align-items: start; flex-direction: column; }
   .site-nav nav { width: 100%; gap: 12px; overflow-x: auto; padding-bottom: 2px; }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 28px; padding-top: 34px; }
   .phone-mock { justify-self: stretch; width: 100%; }
   .mission-grid, .founder-band, .signup-band, .video-card, .product-grid { grid-template-columns: 1fr; }
+  .info-grid, .contact-panel { grid-template-columns: 1fr; }
   .site-band { margin-bottom: 18px; }
   .founder-portrait { width: min(220px, 100%); }
   .demo-phone-frame { width: min(100%, 300px); }
