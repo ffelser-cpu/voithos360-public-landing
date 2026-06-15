@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About Voithos360</title>
-    <meta name="description" content="About the founder and mission behind Voithos360." />
+    <title>Meet the Team | Voithos360</title>
+    <meta name="description" content="Meet the founder and advisors behind Voithos360." />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -23,33 +23,94 @@
       </header>
 
       <section class="page-hero">
-        <p class="eyebrow">Founder</p>
-        <h1>Built for the person trying to make sense of care.</h1>
+        <p class="eyebrow">Meet the team</p>
+        <h1>Built by people who understand care, technology, and trust.</h1>
         <p>
-          Voithos360 is grounded in the belief that patients should not have to carry the full
-          burden of translating, organizing, and chasing down the next step alone.
+          Voithos360 is grounded in a simple belief: patients and caregivers deserve clearer support
+          before, during, and after healthcare moments that can feel confusing or overwhelming.
         </p>
       </section>
 
-      <section class="site-band founder-band">
-        <img class="founder-portrait" src="./headshot.jpg" alt="Felice Felser founder headshot" />
-        <div>
-          <p class="eyebrow">Founder Bio</p>
-          <h2>Felice Felser</h2>
-          <h3>Founder of Voithos360</h3>
-          <p>
-            Felice Felser is the founder of Voithos360, a patient-facing AI care navigation company
-            focused on helping people understand what to ask, what to schedule, and what to do next.
-            Drawing from experience as a Nurse Practitioner, product leader, and digital health
-            strategist, Felice is building technology for the real-world moments where care becomes
-            fragmented, confusing, and emotionally heavy.
-          </p>
-          <p>
-            Voithos360 is designed to support patients and caregivers before, during, and after care
-            encounters, with an emphasis on clarity, follow-through, and human-centered support.
-          </p>
+      <section class="site-band">
+        <div class="section-heading">
+          <p class="eyebrow">Team</p>
+          <h2>Patient-centered, operator-minded.</h2>
+        </div>
+        <div class="team-grid">
+          <article class="team-card">
+            <button type="button" onclick="document.getElementById('felice-dialog').showModal()">
+              <img class="team-photo" src="./headshot.jpg" alt="Felice Felser headshot" />
+              <span>
+                <strong>Felice Felser</strong>
+                <small>Founder, Voithos360</small>
+              </span>
+            </button>
+          </article>
+          <article class="team-card">
+            <button type="button" onclick="document.getElementById('robin-dialog').showModal()">
+              <img class="team-photo" src="./robin-hackney-headshot.png" alt="Robin Hackney headshot" />
+              <span>
+                <strong>Robin Hackney</strong>
+                <small>Advisor, Marketing Executive</small>
+              </span>
+            </button>
+          </article>
+          <article class="team-card">
+            <button type="button" onclick="document.getElementById('jim-dialog').showModal()">
+              <img class="team-photo" src="./jim-szyperski-headshot.png" alt="Jim Szyperski headshot" />
+              <span>
+                <strong>Jim Szyperski</strong>
+                <small>Advisor, B2B Founder &amp; Technology Leader</small>
+              </span>
+            </button>
+          </article>
         </div>
       </section>
+
+      <dialog class="team-dialog" id="felice-dialog">
+        <button class="dialog-close" type="button" onclick="document.getElementById('felice-dialog').close()">Close</button>
+        <img class="team-photo" src="./headshot.jpg" alt="Felice Felser headshot" />
+        <p class="eyebrow">Founder</p>
+        <h2>Felice Felser</h2>
+        <h3>Founder of Voithos360</h3>
+        <p>
+          Felice Felser is the founder of Voithos360, a patient-facing AI care navigation company
+          focused on helping people understand what to ask, what to schedule, and what to do next.
+          Drawing from experience as a Nurse Practitioner, product leader, and digital health
+          strategist, Felice is building technology for the real-world moments where care becomes
+          fragmented, confusing, and emotionally heavy.
+        </p>
+      </dialog>
+
+      <dialog class="team-dialog" id="robin-dialog">
+        <button class="dialog-close" type="button" onclick="document.getElementById('robin-dialog').close()">Close</button>
+        <img class="team-photo large" src="./robin-hackney-headshot.png" alt="Robin Hackney headshot" />
+        <p class="eyebrow">Advisor</p>
+        <h2>Robin Hackney</h2>
+        <h3>Advisor, Marketing Executive</h3>
+        <p>
+          Technology marketing executive with over 20 years of leadership experience. A serial CMO
+          with focus on mid-sized Private Equity-backed SaaS software companies. Robin uses her
+          expertise across marketing disciplines to enhance brand strategy, operationalize demand
+          generation efforts to drive growth, and build high-performing marketing teams.
+        </p>
+        <a class="secondary-link" href="https://www.linkedin.com/in/robinmhackney/" target="_blank" rel="noreferrer">View LinkedIn</a>
+      </dialog>
+
+      <dialog class="team-dialog" id="jim-dialog">
+        <button class="dialog-close" type="button" onclick="document.getElementById('jim-dialog').close()">Close</button>
+        <img class="team-photo large" src="./jim-szyperski-headshot.png" alt="Jim Szyperski headshot" />
+        <p class="eyebrow">Advisor</p>
+        <h2>Jim Szyperski</h2>
+        <h3>Advisor, B2B Founder &amp; Technology Leader</h3>
+        <p>
+          Founder and senior executive with 30+ years of experience creating, scaling, and exiting
+          software companies across multiple verticals. Jim brings a proven history in M&amp;A
+          sourcing and execution, strategic partnerships, and identifying whitespace opportunities
+          in vertical SaaS markets.
+        </p>
+        <a class="secondary-link" href="https://www.linkedin.com/in/jim-szyperski-06b7b93/" target="_blank" rel="noreferrer">View LinkedIn</a>
+      </dialog>
 
       <section class="site-band">
         <p class="eyebrow">Why this matters</p>
@@ -57,6 +118,10 @@
         <p class="founder-note">
           Voithos360 helps carry some of that load by turning visits, documents, referrals, and
           care questions into clear next steps people can actually use.
+        </p>
+        <p class="contact-note">
+          For questions, pilot conversations, or investor follow-up, email
+          <a href="mailto:support@voithos360.com">support@voithos360.com</a>.
         </p>
       </section>
 
