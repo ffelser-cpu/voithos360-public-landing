@@ -99,6 +99,10 @@ button.primary-link { cursor: pointer; width: 100%; }
 .testimonials-grid article { border: 1px solid var(--line); border-radius: 8px; background: var(--white); padding: 20px; display: grid; align-content: space-between; gap: 18px; box-shadow: none; }
 .testimonials-grid p { margin: 0; color: var(--slate); font-size: 18px; line-height: 1.45; }
 .testimonials-grid strong { color: var(--teal); font-size: 13px; text-transform: uppercase; letter-spacing: 0; }
+.perspectives-band .section-heading { display: block; }
+.perspective-card { border: 1px solid var(--line); border-radius: 8px; background: var(--pale); padding: 22px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: center; }
+.perspective-card h3 { margin-bottom: 10px; font-size: clamp(26px, 4vw, 40px); line-height: 1.05; }
+.perspective-card p:not(.eyebrow) { margin-bottom: 0; color: var(--slate); font-size: 18px; line-height: 1.45; }
 
 .signup-form { padding: 18px; display: grid; gap: 12px; box-shadow: none; }
 .signup-form-cta { align-content: center; }
@@ -139,6 +143,7 @@ button.primary-link { cursor: pointer; width: 100%; }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 28px; padding-top: 34px; }
   .phone-mock { justify-self: stretch; width: 100%; }
   .mission-grid, .founder-band, .signup-band, .video-card, .product-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .perspective-card { grid-template-columns: 1fr; }
   .info-grid, .contact-panel, .team-grid { grid-template-columns: 1fr; }
   .site-band { margin-bottom: 18px; }
   .founder-portrait { width: min(220px, 100%); }
