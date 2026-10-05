@@ -311,3 +311,14 @@ button.primary-link { cursor: pointer; width: 100%; }
 .team-belief-band{position:relative;overflow:hidden;margin:0 auto;max-width:1180px;padding:44px 46px;display:grid;grid-template-columns:1fr .85fr;gap:52px;align-items:center;background:linear-gradient(125deg,#071a33,#0c3150);color:white}.team-belief-band h2{margin:6px 0 0;color:white;font-size:clamp(28px,3.5vw,43px)}.team-belief-band>p{margin:0;color:#bfd1df;font-size:17px;line-height:1.55;border-left:2px solid var(--cyan);padding-left:24px}
 @media(max-width:900px){.team-hero{grid-template-columns:1fr}.team-hero-visual{min-height:390px}.team-intro-band .section-heading,.team-belief-band{grid-template-columns:1fr}.team-belief-band>p{border-left:0;border-top:2px solid var(--cyan);padding-left:0;padding-top:20px}}
 @media(max-width:580px){.team-hero{padding:50px 24px}.team-portrait-wrap{right:3%;width:235px;height:315px}.team-hero-card{left:0;width:205px}.team-belief-band{padding:36px 24px}.team-rhythm{font-size:8px}}
+
+/* Team scale refinement */
+.team-grid-modern{grid-template-columns:.8fr .72fr .72fr;max-width:900px;margin:0 auto;align-items:stretch}
+.team-grid-modern .team-photo-shell{height:205px}
+.team-grid-modern .team-card button>span{padding:15px 17px 17px}
+.team-grid-modern strong{font-size:18px}
+.founder-summary-card{display:flex;align-items:stretch;background:linear-gradient(145deg,#edf9fb,#fff)!important}
+.founder-summary-card button{display:flex;align-items:center;min-height:205px}
+.founder-summary-card button>span{padding:26px!important}
+.founder-summary-card p{margin:12px 0 0;color:var(--slate);font-size:13px;line-height:1.45}
+@media(max-width:760px){.team-grid-modern{grid-template-columns:1fr;max-width:430px}.team-grid-modern .team-photo-shell{height:235px}.founder-summary-card button{min-height:auto}}
